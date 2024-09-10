@@ -15,5 +15,8 @@ namespace CadastroDeAlunos2._0.Date
 
         // criando a tabela no banco de dados
         public DbSet<AulasModel> Aluno { get; set; }
+
+        public DbSet<AulasModel> Login { get; set; }
+
     }
 }

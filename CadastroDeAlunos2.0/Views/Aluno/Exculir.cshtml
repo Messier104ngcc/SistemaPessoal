@@ -1,0 +1,52 @@
+﻿@model AulasModel
+
+@* informando para a tela que ela vai receber os dados direto dessa calsse, no campos que o usuario digitar *@
+
+@{
+    ViewData["title"] = "Excluir Aula"; /* mudando o nome da pagina */
+}
+
+@* formulario de cadastro *@
+
+<div class="container bg-black p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Exclusão de Aulas</h1>
+    </div>
+
+    @*     A utilização do method="post" indica que apois clicar no botão adicionar do formulario, todas as informações vão ser transferidas para o metodo cadastrar no AlunoController, e vão ser salvas no banco de dados
+    *@
+    <form method="post" asp-asp-controller="Aluno" asp-action="Excluir">
+
+        <input type="hidden" asp-for="Id" /> @* pegando o Id da tabela, mais não mostra no formulario *@
+
+        <h2 class="text-light">Deseja Relamente Excluir esse Registro?</h2>
+
+        <div class="mb-3">
+            <label for="Nome" class="form-label text-light">Nome</label>
+            <input type="text" class="form-control" asp-for="Nome" id="Nome" placeholder="Nome do Aluno" disabled>
+            <span class="text-danger" asp-validation-for="Nome"></span> @* chamando a mensagem de erro da classe AulasModel *@
+        </div>
+        @*         A utilização do asp-for="" indica que o campo do formulario está recebendo valor, para poder ser salvar no banco apois a ação do botão adicionar
+        *@
+        <div class="mb-3">
+            <label for="Materia" class="form-label text-light">Materia</label>
+            <input type="text" class="form-control" asp-for="Materia" id="Materia" placeholder="Nome da Materia" disabled>
+            <span class="text-danger" asp-validation-for="Materia"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Sala" class="form-label text-light">Sala</label>
+            <input type="text" class="form-control" asp-for="Sala" id="Sala" placeholder="Numero da Sala" disabled>
+            <span class="text-danger" asp-validation-for="Sala"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-danger w-20">Excluir</button>
+            <a class="btn btn-primary w-40" asp-controller="Aluno" asp-action="Index">Voltar</a>
+        </div>
+
+
+    </form>
+</div>
+

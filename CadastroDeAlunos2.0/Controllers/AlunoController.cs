@@ -15,9 +15,9 @@ namespace CadastroDeAlunos2._0.Controllers
         public IActionResult Index()
         {
             // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<AulasModel> aulas = _db.Aluno;
+            IEnumerable<AulasModel> aluno = _db.Aluno;
 
-            return View(aulas);
+            return View(aluno);
         }
 
         // metodo que abre a tela de cadastro de aulas, iunto com o formulario.

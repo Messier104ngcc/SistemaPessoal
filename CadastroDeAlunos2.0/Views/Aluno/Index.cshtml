@@ -46,16 +46,16 @@
 
         @if(Model != null)
         {
-            @foreach(var aulas in Model)
+            @foreach(var aluno in Model)
             {
                 <tr>
-                    <th scope="row">@aulas.Nome</th>
-                    <td>@aulas.Materia</td>
-                    <td>@aulas.Sala</td>
-                    <td>@aulas.DataAula</td>
+                    <th scope="row">@aluno.Nome</th>
+                    <td>@aluno.Materia</td>
+                    <td>@aluno.Sala</td>
+                    <td>@aluno.DataAula</td>
                     <td>
-                            <a asp-controller="Aluno" asp-action="Editar" asp-route-id="@aulas.Id" class="btn btn-warning mx-2"><i class="bi bi-pen-fill mx-2"></i>Editar</a>
-                            <a asp-controller="Aluno" asp-action="Excluir" asp-route-id="@aulas.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                            <a asp-controller="Aluno" asp-action="Editar" asp-route-id="@aluno.Id" class="btn btn-warning mx-2"><i class="bi bi-pen-fill mx-2"></i>Editar</a>
+                            <a asp-controller="Aluno" asp-action="Excluir" asp-route-id="@aluno.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
                             @* Adicionando o asp-route="" siginifica que a ação vai ser feita paenas um um registro da tabela apos a ação do botão *@
                     </td>
                     

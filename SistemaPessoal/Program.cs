@@ -1,7 +1,7 @@
 
 // arquivo que é redodado preimeiramente antes de todas as acões.
 
-using CadastroDeAlunos2._0.Date;
+using SistemaPessoal.Date;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

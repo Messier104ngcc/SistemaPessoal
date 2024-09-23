@@ -1,26 +1,27 @@
-﻿using CadastroDeAlunos2._0.Date;
-using CadastroDeAlunos2._0.Models;
+﻿using SistemaPessoal.Date;
+using SistemaPessoal.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace CadastroDeAlunos2._0.Controllers
+namespace SistemaPessoal.Controllers
 {
-    public class AlunoController : Controller
+    public class DespesasController : Controller
     {
         readonly private ApplicationDbContext _db;
         // buscanco o registro do banco
-        public AlunoController(ApplicationDbContext db) 
+        public DespesasController(ApplicationDbContext db) 
         { 
             _db = db;
         }
         public IActionResult Index()
         {
             // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<AulasModel> aluno = _db.Aluno;
+            IEnumerable<DespesasModel> despesas = _db.Despesas;
 
-            return View(aluno);
+            return View(despesas);
         }
 
-        // metodo que abre a tela de cadastro de aulas, iunto com o formulario.
+        // metodo que abre a tela de cadastro de despesas, junto com o formulario.
         [HttpGet]
         public IActionResult Cadastrar() 
         {
@@ -28,11 +29,11 @@ namespace CadastroDeAlunos2._0.Controllers
         }
 
         [HttpPost] // tornando o metodo em post, assim será possivel que todas as informacçoes digitadas sejam salvas no banco de dados.
-        public IActionResult Cadastrar(AulasModel aluno)
+        public IActionResult Cadastrar(DespesasModel despesas)
         {
             if (ModelState.IsValid)
             {
-                _db.Aluno.Add(aluno); // adicionado todas as informações no banco.
+                _db.Despesas.Add(despesas); // adicionado todas as informações no banco.
                 _db.SaveChanges(); // salvando as informações no banco.
 
                 TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
@@ -53,14 +54,14 @@ namespace CadastroDeAlunos2._0.Controllers
                 return NotFound();
             }
 
-            AulasModel aulas = _db.Aluno.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesas = _db.Despesas.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
 
-            if (aulas == null) 
+            if (despesas == null) 
             {
                 return NotFound();
             }
 
-            return View(aulas);
+            return View(despesas);
         }
         
         // metdo que vem com o Id selecionado do banco de dados.
@@ -72,25 +73,25 @@ namespace CadastroDeAlunos2._0.Controllers
                 return NotFound();
             }
 
-            AulasModel aulas = _db.Aluno.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesas = _db.Despesas.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
 
-            if (aulas == null)
+            if (despesas == null)
             {
                 return NotFound();
             }
 
-            return View(aulas);
+            return View(despesas);
         }
 
 
 
         // metodo que está recebendo todas as informações preenchidas do banco.
         [HttpPost]
-        public IActionResult Editar(AulasModel aula)
+        public IActionResult Editar(DespesasModel despesas)
         {
             if (ModelState.IsValid) 
             {
-                _db.Aluno.Update(aula); // atualizando as informações do banco
+                _db.Despesas.Update(despesas); // atualizando as informações do banco
                 _db.SaveChanges(); // salvando as informações atualizadas
 
                 TempData["MensagemSucesso"] = "Alterações realizado com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
@@ -100,20 +101,20 @@ namespace CadastroDeAlunos2._0.Controllers
 
             TempData["MensagemErro"] = "Ocorreu algum erro de edicção das informações!"; // mensagem de erro caso ocorra agum erro apois salvar as alterações.
 
-            return View(aula);
+            return View(despesas);
         }
         
 
         // metodo para excluir registro do banco
         [HttpPost]
-        public IActionResult Excluir(AulasModel aula)
+        public IActionResult Excluir(DespesasModel despesas)
         {
-            if (aula == null) // condição para verificar se há infoemações salvas no banco
+            if (despesas == null) // condição para verificar se há infoemações salvas no banco
             {
                 return NoContent();
             }
 
-            _db.Aluno.Remove(aula); 
+            _db.Despesas.Remove(despesas); 
             _db.SaveChanges();
 
             TempData["MensagemSucesso"] = " Registro excluido com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
@@ -121,5 +122,28 @@ namespace CadastroDeAlunos2._0.Controllers
             return RedirectToAction("Index");   
         }
 
+        public IActionResult Paga(int id)
+        {
+            var despesa = _db.Despesas.Find(id);
+
+
+            if (despesa != null)
+            {
+                // Define o valor de 'Paga' como "SIM" antes de atualizar no banco
+                despesa.Paga = "Sim";
+
+                _db.SaveChanges(); // salvando as informações atualizadas
+
+                TempData["MensagemSucesso"] = "Pagamento realizado com sucesso!"; // mensagem mostranado ao usuario que o pagamento deu certo.
+
+                return RedirectToAction("Index");
+            }
+
+            TempData["MensagemErro"] = "Ocorreu algum erro com o Pagamento!"; // mensagem de erro caso ocorra agum erro apois salvar as alterações.
+
+            return View(despesa);
+        }
     }
+
 }
+

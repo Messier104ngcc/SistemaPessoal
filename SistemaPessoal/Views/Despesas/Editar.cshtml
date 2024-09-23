@@ -1,0 +1,56 @@
+﻿@using SistemaPessoal.Models
+@model DespesasModel
+
+@* informando para a tela que ela vai receber os dados direto dessa classe, no campos que o usuario digitar *@
+
+@{
+    ViewData["title"] = "Editar Despesas"; /* mudando o nome da pagina */
+}
+
+@* formulario de cadastro *@
+
+<div class="container bg-black p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Edição de Despesas</h1>
+    </div>
+
+    @*     A utilização do method="post" indica que apois clicar no botão adicionar do formulario, todas as informações vão ser transferidas para o metodo cadastrar no DespesasController, e vão ser salvas no banco de dados
+    *@
+    <form method="post" asp-asp-controller="Despesas" asp-action="Editar">
+
+        <input type="hidden" asp-for="Id"/> @* pegando o Id da tabela, mais não mostra no formulario *@
+
+        <div class="mb-3">
+            <label for="Despesas" class="form-label text-light">Despesa</label>
+            <input type="text" class="form-control" asp-for="Despesa" id="Despesa" placeholder="Despesa">
+            <span class="text-danger" asp-validation-for="Despesa"></span> @* chamando a mensagem de erro da classe DespesasModel *@
+        </div>
+        @*         A utilização do asp-for="" indica que o campo do formulario está recebendo valor, para poder ser salvar no banco apois a ação do botão adicionar
+        *@
+        <div class="mb-3">
+            <label for="Observacao" class="form-label text-light">Observação</label>
+            <input type="text" class="form-control" asp-for="Observacao" id="Observacao" placeholder="Observações">
+            <span class="text-danger" asp-validation-for="Observacao"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Valor" class="form-label text-light">Valor</label>
+            <input type="text" class="form-control" asp-for="Valor" id="Sala" placeholder="Valor">
+            <span class="text-danger" asp-validation-for="Valor"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Vencimento" class="form-label text-light">Vencimento</label>
+            <input type="text" class="form-control" asp-for="Vencimento" id="Vencimento" placeholder="Data de Vencimento" maxlength="10" oninput="formatarData(this)">
+            <span class="text-danger" asp-validation-for="Vencimento"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-20"><i class="bi bi-floppy-fill mx-2"></i>Salvar</button>
+            <a class="btn btn-primary w-40" asp-controller="Despesas" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

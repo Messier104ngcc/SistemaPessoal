@@ -3,7 +3,7 @@
 // codigo refrente ao uso dos filtros na pagina
 $(document).ready(function () { // o que tiver dentro a function, vai ser rodado dentro da pagina junto ao JS.
 
-    $('#Aulas').DataTable({ // codogio onde é possivel está mudando a linguagem dos filtros ja estilizados.
+    $('#Despesas').DataTable({ // codogio onde é possivel está mudando a linguagem dos filtros ja estilizados.
         language: {
             "decimal": "",
             "emptyTable": "No data available in table",
@@ -39,3 +39,19 @@ $(document).ready(function () { // o que tiver dentro a function, vai ser rodado
     }, 5000)
 
 });
+
+function formatarData(input) {
+    let valor = input.value;
+
+    // Remove tudo que não for número
+    valor = valor.replace(/\D/g, "");
+
+    // Coloca a barra entre o dia, mês e ano
+    if (valor.length >= 5) {
+        input.value = valor.substring(0, 2) + '/' + valor.substring(2, 4) + '/' + valor.substring(4, 8);
+    } else if (valor.length >= 3) {
+        input.value = valor.substring(0, 2) + '/' + valor.substring(2, 4);
+    } else if (valor.length >= 1) {
+        input.value = valor.substring(0, 2);
+    }
+}

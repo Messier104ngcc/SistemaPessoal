@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>CadastroDeAlunos2._0</RootNamespace>
+    <RootNamespace>SistemaPessoal</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Aluno\Exculir.cshtml" />
+    <Content Remove="Views\Despesas\Exculir.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

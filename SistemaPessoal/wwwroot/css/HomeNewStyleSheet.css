@@ -1,0 +1,92 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    height:100%;
+    width: 100%; /* Largura em relação ao tamanho da tela */
+    max-width: 1200px; /* Limita a largura máxima */
+    min-width: 300px; /* Limita a largura mínima */
+    padding: 20px; /* Espaçamento interno */
+    margin: 0 auto; /* Centraliza o main horizontalmente */
+    background-color: #f0f0f0; /* Cor de fundo para visualização */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    border: 1px solid #ccc; /* Borda opcional */
+}
+
+
+#Usuario {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #DBDBE1;
+    padding-right: 50px;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    width: 100%;
+    text-align: justify;
+    padding: 10px;
+    background-color: #3C3E43; /* Cor de fundo do footer */
+    position: relative;
+    bottom: 0;
+}
+
+    .container-footer {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #DBDBE1;
+        font-size: 15px;
+    }
+
+h1 {
+    padding-top: 1%;
+    align-items: initial;
+    display: flex;
+}
+
+h2 {
+    padding-top: 2%;
+    padding-bottom: 3%;
+    align-items:initial;
+    display: flex;
+}
+
+#navbar-link {
+    background-color: #3C3E43;
+    padding: 0%;
+}
+
+.container-agendamentos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2 colunas */
+    gap: 20px; /* Espaço entre os quadrados */
+}
+.quadrado {
+    width: 250px; /* Largura do quadrado */
+    height: 200px; /* Altura do quadrado */
+    border: 0px solid #333; /* Borda */
+    background-color: white; /* Cor de fundo dos quadrados */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 10px; /* Espaçamento interno */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    text-align: center; /* Alinha o texto ao centro */
+    border-radius: 5px;
+}
+
+img {
+    width: 140px; /* Largura do logo */
+    margin-bottom: 0; /* Espaçamento abaixo do logo */
+}

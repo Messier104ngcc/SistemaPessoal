@@ -1,9 +1,9 @@
 ﻿
 
-using CadastroDeAlunos2._0.Models;
+using SistemaPessoal.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CadastroDeAlunos2._0.Date
+namespace SistemaPessoal.Date
 {
     // classe ou instacia responsavel para fazer conecxão com a string do banco.
     public class ApplicationDbContext : DbContext
@@ -14,9 +14,9 @@ namespace CadastroDeAlunos2._0.Date
         }
 
         // criando a tabela no banco de dados
-        public DbSet<AulasModel> Aluno { get; set; }
+        public DbSet<DespesasModel> Despesas { get; set; }
 
-        public DbSet<AulasModel> Login { get; set; }
+        public DbSet<DespesasModel> Login { get; set; }
 
     }
 }

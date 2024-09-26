@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SistemaPessoal.Date;
 using SistemaPessoal.Models;
 
 namespace SistemaPessoal.Controllers
 {
+    [Authorize] //protegendo as paginas internas, onde só será acessivel por usuarios altenticados.
     public class HomeController : Controller
     {
         readonly private ApplicationDbContext _db;
@@ -15,7 +17,7 @@ namespace SistemaPessoal.Controllers
         public IActionResult Index()
         {
             // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<DespesasModel> home = _db.Despesas;
+            IEnumerable<DespesasModel> home = _db.DespesasModel;
 
             return View(home);
         }

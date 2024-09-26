@@ -2,9 +2,12 @@
 using SistemaPessoal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaPessoal.Controllers
 {
+    [Authorize] //protegendo as paginas internas, onde só será acessivel por usuarios altenticados.
+
     public class DespesasController : Controller
     {
         readonly private ApplicationDbContext _db;
@@ -16,9 +19,9 @@ namespace SistemaPessoal.Controllers
         public IActionResult Index()
         {
             // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<DespesasModel> despesas = _db.Despesas;
+            IEnumerable<DespesasModel> despesa = _db.DespesasModel;
 
-            return View(despesas);
+            return View(despesa);
         }
 
         // metodo que abre a tela de cadastro de despesas, junto com o formulario.
@@ -33,14 +36,15 @@ namespace SistemaPessoal.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Despesas.Add(despesas); // adicionado todas as informações no banco.
+                _db.DespesasModel.Add(despesas); // adicionado todas as informações no banco.
                 _db.SaveChanges(); // salvando as informações no banco.
 
-                TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
+                TempData["MensagemSucesso"] = "Despesas cadastrada!"; // mensagem mostranado ao usuario que o cadastro deu certo.
 
                 return RedirectToAction("Index"); // apos der tudo certo, retonara para tela Aluno/Index.
             }
 
+            TempData["MensagemErro"] = "Ocorreu algum erro ao Cadastrar a despesa!";
             return View(); // caso der alguma erro, ou o ususario não preencheu as informações certas, permanecerá na tela ate que estja tudo ok.
         }
 
@@ -54,14 +58,14 @@ namespace SistemaPessoal.Controllers
                 return NotFound();
             }
 
-            DespesasModel despesas = _db.Despesas.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
 
-            if (despesas == null) 
+            if (despesa == null) 
             {
                 return NotFound();
             }
 
-            return View(despesas);
+            return View(despesa);
         }
         
         // metdo que vem com o Id selecionado do banco de dados.
@@ -73,25 +77,25 @@ namespace SistemaPessoal.Controllers
                 return NotFound();
             }
 
-            DespesasModel despesas = _db.Despesas.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
 
-            if (despesas == null)
+            if (despesa == null)
             {
                 return NotFound();
             }
 
-            return View(despesas);
+            return View(despesa);
         }
 
 
 
         // metodo que está recebendo todas as informações preenchidas do banco.
         [HttpPost]
-        public IActionResult Editar(DespesasModel despesas)
+        public IActionResult Editar(DespesasModel despesa)
         {
             if (ModelState.IsValid) 
             {
-                _db.Despesas.Update(despesas); // atualizando as informações do banco
+                _db.DespesasModel.Update(despesa); // atualizando as informações do banco
                 _db.SaveChanges(); // salvando as informações atualizadas
 
                 TempData["MensagemSucesso"] = "Alterações realizado com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
@@ -101,20 +105,20 @@ namespace SistemaPessoal.Controllers
 
             TempData["MensagemErro"] = "Ocorreu algum erro de edicção das informações!"; // mensagem de erro caso ocorra agum erro apois salvar as alterações.
 
-            return View(despesas);
+            return View(despesa);
         }
         
 
         // metodo para excluir registro do banco
         [HttpPost]
-        public IActionResult Excluir(DespesasModel despesas)
+        public IActionResult Excluir(DespesasModel despesa)
         {
-            if (despesas == null) // condição para verificar se há infoemações salvas no banco
+            if (despesa == null) // condição para verificar se há infoemações salvas no banco
             {
                 return NoContent();
             }
 
-            _db.Despesas.Remove(despesas); 
+            _db.DespesasModel.Remove(despesa); 
             _db.SaveChanges();
 
             TempData["MensagemSucesso"] = " Registro excluido com sucesso!"; // mensagem mostranado ao usuario que o cadastro deu certo.
@@ -124,7 +128,7 @@ namespace SistemaPessoal.Controllers
 
         public IActionResult Paga(int id)
         {
-            var despesa = _db.Despesas.Find(id);
+            var despesa = _db.DespesasModel.Find(id);
 
 
             if (despesa != null)

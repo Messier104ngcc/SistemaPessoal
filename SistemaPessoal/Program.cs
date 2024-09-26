@@ -1,19 +1,32 @@
 
 // arquivo que é redodado preimeiramente antes de todas as acões.
 
-using SistemaPessoal.Date;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
+using SistemaPessoal.Date;
+using SistemaPessoal.Date.Repositorio.Interfacer;
+using SistemaPessoal.Date.Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// adicionando a conexção com Banco de Dados, ouacessando a conction string do banco de dados.
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Login/Index"); //401 - Unauthorized
+        options.AccessDeniedPath = new PathString("/Login/AcessoNegado"); //403 - Forbidden
+    });
+
+// adicionando a conexção com Banco de Dados, ou acessando a conction string do banco de dados.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn"));
 });
+
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 var app = builder.Build();
 
@@ -29,6 +42,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always
+});
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

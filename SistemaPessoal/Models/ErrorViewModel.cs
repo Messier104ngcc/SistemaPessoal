@@ -1,4 +1,4 @@
-namespace CadastroDeAlunos2._0.Models
+﻿namespace SistemaPessoal.Models
 {
     public class ErrorViewModel
     {

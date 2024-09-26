@@ -90,3 +90,19 @@ img {
     width: 140px; /* Largura do logo */
     margin-bottom: 0; /* Espaçamento abaixo do logo */
 }
+
+.nav-list2 {
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    position: relative;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 20px;
+    margin: 0px;
+}
+
+    .nav-list2 li a:hover {
+        background-color: #DBDBE1; /* Fundo cinza claro ao passar o mouse */
+    }
+

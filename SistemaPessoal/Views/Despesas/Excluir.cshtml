@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="Despesa" class="form-label text-light">Despesa</label>
-            <input type="text" class="form-control" asp-for="Despesa" id="Depesa" placeholder="Despesa" disabled>
+            <input type="text" class="form-control" asp-for="Despesa" id="Despesa" placeholder="Despesa" disabled>
             <span class="text-danger" asp-validation-for="Despesa"></span> @* chamando a mensagem de erro da classe DespesasModel *@
         </div>
         @*         A utilização do asp-for="" indica que o campo do formulario está recebendo valor, para poder ser salvar no banco apois a ação do botão adicionar

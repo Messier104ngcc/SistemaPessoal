@@ -11,6 +11,7 @@
         @* dando um ID para tabela, para poder estár usando os filtros já exportados *@
         <thead>
             <tr>
+                <th scope="col">Paga</th>
                 <th scope="col">Despesa</th>
                 <th scope="col">Observações</th>
                 <th scope="col">Valor</th>
@@ -23,14 +24,25 @@
 
             @if (Model != null)
             {
-                @foreach (var despesas in Model)
+                @foreach (var despesa in Model)
                 {
                     <tr>
-                        <th scope="row">@despesas.Despesa</th>
-                        <td>@despesas.Observacao</td>
-                        <td>@despesas.Valor</td>
                         <td>
-                            @despesas.Vencimento.ToString("yyyy-MM-dd")
+                            @if (despesa.Paga == "Sim")
+                            {
+                                <i class="bi bi-check-circle-fill text-success mx-2">Sim</i>
+                            }
+                            else
+                            {
+                                @despesa.Paga
+                            }
+
+                        </td>
+                        <th scope="row">@despesa.Despesa</th>
+                        <td>@despesa.Observacao</td>
+                        <td>@despesa.Valor</td>
+                        <td>
+                            @despesa.Vencimento.ToString("yyyy-MM-dd")
                         </td>
                     </tr>                   
                 }

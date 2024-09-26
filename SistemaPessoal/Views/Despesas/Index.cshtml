@@ -1,4 +1,4 @@
-﻿@using SistemaPessoal.Models
+﻿
 @model IEnumerable<DespesasModel>
 
 <div class="container">
@@ -30,6 +30,7 @@
         </div>
     }
 
+
 <table id="Despesas" class="table table-hover">  @* dando um ID para tabela, para poder estár usando os filtros já exportados *@
     <thead>
         <tr>
@@ -47,30 +48,30 @@
 
         @if(Model != null)
         {
-            @foreach(var despesas in Model)
+            @foreach(var despesa in Model)
             {
                 <tr>
                     <td>
-                            @if (despesas.Paga == "Sim")
+                            @if (despesa.Paga == "Sim")
                             {
                                 <i class="bi bi-check-circle-fill text-success mx-2">Sim</i> 
                             }
                             else
                             {
-                                @despesas.Paga
+                                @despesa.Paga
                             }
 
                     </td>
-                    <td>@despesas.Despesa</td>
-                    <td>@despesas.Observacao</td>
-                    <td>@despesas.Valor</td>
+                    <td>@despesa.Despesa</td>
+                    <td>@despesa.Observacao</td>
+                    <td>@despesa.Valor</td>
                         <td>
-                            @despesas.Vencimento.ToString("yyyy-MM-dd")
+                            @despesa.Vencimento.ToString("yyyy-MM-dd")
                         </td>
                     <td>
-                            <a asp-controller="Despesas" asp-action="Editar" asp-route-id="@despesas.Id" class="btn btn-warning mx-2"><i class="bi bi-pen-fill mx-2"></i>Editar</a>
-                            <a asp-controller="Despesas" asp-action="Excluir" asp-route-id="@despesas.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
-                            <a asp-controller="Despesas" asp-action="Paga" asp-route-id="@despesas.Id" class="btn btn-success mx-2"><i class="bi bi-cash-coin mx-2"></i>Pagar</a>
+                            <a asp-controller="Despesas" asp-action="Editar" asp-route-id="@despesa.Id" class="btn btn-warning mx-2"><i class="bi bi-pen-fill mx-2"></i>Editar</a>
+                            <a asp-controller="Despesas" asp-action="Excluir" asp-route-id="@despesa.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                            <a asp-controller="Despesas" asp-action="Paga" asp-route-id="@despesa.Id" class="btn btn-success mx-2"><i class="bi bi-cash-coin mx-2"></i>Pagar</a>
                             @* Adicionando o asp-route="" siginifica que a ação vai ser feita penas um registro da tabela apos a ação do botão *@
                     </td>                    
                 </tr>
@@ -79,5 +80,4 @@
        
     </tbody>
 </table>
-
 </div>

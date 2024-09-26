@@ -1,4 +1,4 @@
-﻿@using SistemaPessoal.Models
+﻿@* @using SistemaPessoal.Models *@
 
 @model DespesasModel
 
@@ -6,6 +6,13 @@
 
 @{
     ViewData["title"] = "Cadastrar Despesas"; /* mudando o nome da pagina */
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["MensagemErro"]
+    </div>
 }
 
 @* formulario de cadastro *@
@@ -18,30 +25,30 @@
 
 @*     A utilização do method="post" indica que apois clicar no botão adicionar do formulario, todas as informações vão ser transferidas para o metodo cadastrar no AlunoController, e vão ser salvas no banco de dados
  *@ 
-    <form method="post" asp-asp-controller="Despesas" asp-action="Cadastrar">
+    <form asp-controller="Despesas" asp-action="Cadastrar" method="post">
 
         <div class="mb-3">
             <label for="Despesa" class="form-label text-light">Despesa</label>
-            <input type="text" class="form-control" asp-for="Despesa" id="Despesa" placeholder="Nome da Despesa"> 
+            <input type="text" class="form-control" asp-for="Despesa" id="Despesa"  required placeholder="Nome da Despesa">
             <span class="text-danger" asp-validation-for="Despesa"></span> @* chamando a mensagem de erro da classe DespesasModel *@
         </div>
 @*         A utilização do asp-for="" indica que o campo do formulario está recebendo valor, para poder ser salvar no banco apois a ação do botão adicionar
  *@
          <div class="mb-3">
             <label for="Observacao" class="form-label text-light">Observações</label>
-            <input type="text" class="form-control" asp-for="Observacao" id="Observacao" placeholder="Observações">
+            <input type="text" class="form-control" asp-for="Observacao" id="Observacao"  placeholder="Observações">
             <span class="text-danger" asp-validation-for="Observacao"></span>
         </div>
 
          <div class="mb-3">
             <label for="Valor" class="form-label text-light">Valor</label>
-            <input type="text" class="form-control" asp-for="Valor" id="Valor" placeholder="Valor">
+            <input type="text" class="form-control" asp-for="Valor" id="Valor" name="valor" required placeholder="Valor">
             <span class="text-danger" asp-validation-for="Valor"></span>
         </div>
 
         <div class="mb-3">
             <label for="Vencimento" class="form-label text-light">Vencimento</label>
-            <input type="text" class="form-control" asp-for="Vencimento" id="Vencimento" placeholder="Data de Vencimento" maxlength="10" oninput="formatarData(this)">
+            <input type="text" class="form-control" asp-for="Vencimento" id="Vencimento" required placeholder="Data de Vencimento" maxlength="10" oninput="formatarData(this)">
             <span class="text-danger" asp-validation-for="Vencimento"></span>
         </div>
  

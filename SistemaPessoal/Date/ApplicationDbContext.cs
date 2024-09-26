@@ -12,11 +12,15 @@ namespace SistemaPessoal.Date
         {
                 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new Usuarios());
+        }
 
         // criando a tabela no banco de dados
-        public DbSet<DespesasModel> Despesas { get; set; }
+        public DbSet<DespesasModel> DespesasModel { get; set; }
 
-        public DbSet<DespesasModel> Login { get; set; }
+        public DbSet<Models.Usuarios> Login { get; set; }
 
     }
 }

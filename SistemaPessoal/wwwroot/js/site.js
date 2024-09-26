@@ -1,7 +1,8 @@
 ﻿
 
 // codigo refrente ao uso dos filtros na pagina
-$(document).ready(function () { // o que tiver dentro a function, vai ser rodado dentro da pagina junto ao JS.
+$(document).ready(function () {
+    // o que tiver dentro a function, vai ser rodado dentro da pagina junto ao JS.
 
     $('#Despesas').DataTable({ // codogio onde é possivel está mudando a linguagem dos filtros ja estilizados.
         language: {
@@ -55,3 +56,5 @@ function formatarData(input) {
         input.value = valor.substring(0, 2);
     }
 }
+
+

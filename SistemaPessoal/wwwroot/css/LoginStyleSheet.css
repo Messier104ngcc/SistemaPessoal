@@ -26,8 +26,8 @@ body {
 .container {
     display: flex;
     width: 100%; /* Mantém a largura em 100% do elemento pai */
+    height: 100%;
     max-width: 1400px; /* Aumenta o max-width */
-    border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #2D2D3E;
     padding: 20px; /* Adiciona um padding interno */
@@ -49,7 +49,7 @@ body {
 
     .left-panel .logo {
         text-align: center;
-        padding-top: 35%;
+        padding-top: 3%;
     }
 
         .left-panel .logo h1 {
@@ -81,7 +81,7 @@ body {
 .right-panel {
     width: 60%;
     padding: 40px;
-    padding-bottom: 15%;
+    padding-bottom: 10%;
     background-color: #F7F7F7;
     display: flex;
     justify-content: center;
@@ -100,7 +100,8 @@ body {
 }
 
     .user-icon img {
-        width: 100px;
+        width: 50px;
+        height: 50%;
     }
 
 .form-group {
@@ -197,6 +198,7 @@ footer {
 
 
 .forgot-support {
+    scroll-padding-top: 10%;
     align-items: center;
     display: flex;
     justify-content: flex-end;
@@ -243,7 +245,7 @@ footer {
 .text-danger {
     color: red;
     border-color: #ffeeba;
-    font-size: 15px;
+    font-size: 10px;
     padding: 0px;
 }
 
@@ -251,5 +253,5 @@ footer {
 #imglogo {
     height: 100%;
     width: 100%;
-    padding-left: 10%;
+    padding-bottom: 10%;
 }

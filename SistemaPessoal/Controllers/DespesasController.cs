@@ -3,6 +3,7 @@ using SistemaPessoal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace SistemaPessoal.Controllers
 {
@@ -51,14 +52,14 @@ namespace SistemaPessoal.Controllers
 
         // metdo que vem com o Id selecionado do banco de dados.
         [HttpGet]
-        public IActionResult Editar(int? id) 
+        public IActionResult Editar(int? DespesaId) 
         {
-            if (id == null || id ==0) 
+            if (DespesaId == null || DespesaId == 0) 
             {
                 return NotFound();
             }
 
-            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.DespesaId == DespesaId); // basicamento é um comando WHERE da tabela na coluna ID.
 
             if (despesa == null) 
             {
@@ -70,14 +71,15 @@ namespace SistemaPessoal.Controllers
         
         // metdo que vem com o Id selecionado do banco de dados.
         [HttpGet]
-        public IActionResult Excluir(int? id)
+        public IActionResult Excluir(int? DespesaId)
         {
-            if (id == null || id == 0)
+
+            if (DespesaId == null || DespesaId == 0)
             {
                 return NotFound();
             }
 
-            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == id); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.DespesaId == DespesaId); // basicamento é um comando WHERE da tabela na coluna ID.
 
             if (despesa == null)
             {
@@ -95,6 +97,8 @@ namespace SistemaPessoal.Controllers
         {
             if (ModelState.IsValid) 
             {
+                string Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
                 _db.DespesasModel.Update(despesa); // atualizando as informações do banco
                 _db.SaveChanges(); // salvando as informações atualizadas
 
@@ -113,8 +117,9 @@ namespace SistemaPessoal.Controllers
         [HttpPost]
         public IActionResult Excluir(DespesasModel despesa)
         {
-            if (despesa == null) // condição para verificar se há infoemações salvas no banco
+            if (despesa == null) // condição para verificar se há informações salvas no banco
             {
+                ViewBag.MensagemErro = "⚠ Despesa não encontrada ou você não tem permissão para excluí-la.";
                 return NoContent();
             }
 

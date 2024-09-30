@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaPessoal.Date;
 using SistemaPessoal.Models;
+using System.Security.Claims;
 
 namespace SistemaPessoal.Controllers
 {
@@ -16,10 +17,12 @@ namespace SistemaPessoal.Controllers
         }
         public IActionResult Index()
         {
-            // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<DespesasModel> home = _db.DespesasModel;
+            string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return View(home);
+            // Filtra as despesas pelo ID do usuário
+            IEnumerable<DespesasModel> despesa = _db.DespesasModel.Where(t => t.UserId == UserId);
+
+            return View("Index");
         }
     }
 }

@@ -37,7 +37,7 @@ $(document).ready(function () {
         $(".alert").fadeOut("slow", function () { // função que ele ira executar.
             $(this).alert('close');
         })
-    }, 5000)
+    }, 3000)
 
 });
 

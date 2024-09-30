@@ -37,35 +37,43 @@ namespace SistemaPessoal.Controllers
                 .Where(t => t.UserName == username && t.Senha == senha)
                 .FirstOrDefault();
 
-            if (usuarioExistente != null)
+            if (ModelState.IsValid)
             {
-                // Criar as claims de identidade do usuário
-                var claims = new List<Claim>
+                if (usuarioExistente != null)
+                {
+                    // Criar as claims de identidade do usuário
+                    var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, username),
                 new Claim(ClaimTypes.Role, "Usuario")  // Defina um papel (role) conforme necessário
             };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                // Criar o cookie de autenticação
-                var authProperties = new AuthenticationProperties
+                    // Criar o cookie de autenticação
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true, // O cookie permanece após o fechamento do navegador
+                    };
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+
+                    // Redirecionar para a página inicial do sistema após login
+                    return RedirectToAction("Index", "Home");
+                }
+                else
                 {
-                    IsPersistent = true, // O cookie permanece após o fechamento do navegador
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-
-
-                // Redirecionar para a página inicial do sistema após login
-                return RedirectToAction("Index", "Home");
+                    // Exibe a mensagem de erro se o login for inválido
+                    ViewBag.MensagemErro = "❌ Usuário ou senha inválidos!";
+                    return View("Index");
+                }
             }
-            else
-            {
-                // Exibe a mensagem de erro se o login for inválido
-                TempData["MensagemErro"] = "Usuário ou senha inválidos!";
-                return View("Index");
-            }
+
+            // Se houver erros, reexibir o formulário
+            ViewBag.MensagemErro = "❌ Digite um Usuario e Senha.";
+            return View("Index");
+
         }
 
         // Logout do usuário
@@ -88,14 +96,14 @@ namespace SistemaPessoal.Controllers
             {
                 if (_db.Login.Any(t => model.Senha != model.ConfSenha))
                 {
-                    TempData["MensagemErro"] = "Senhas não coincidem!";
+                    ViewBag.MensagemErro = "❌ Senhas não coincidem!";
                     return View("CadastroIndex");
                 }
 
                 // Verificar se o usuário já existe
                 if (_db.Login.Any(t => t.UserName == model.UserName))
                 {
-                    TempData["MensagemAlert"] = "Nome de usuário já existente.";
+                    ViewBag.Mensagem = " ⚠ Nome de usuário já existente.";
                     return View("CadastroIndex");
                 }
                 else
@@ -107,6 +115,7 @@ namespace SistemaPessoal.Controllers
             }
 
             // Se houver erros, reexibir o formulário
+            ViewBag.MensagemErro = "❌ Faltam campos a serem preenchidos.";
             return View("CadastroIndex");
         }
     }

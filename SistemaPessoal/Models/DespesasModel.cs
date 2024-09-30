@@ -6,7 +6,8 @@ namespace SistemaPessoal.Models
 {
     public class DespesasModel
     {
-        public int Id { get; set; }
+        [Key]
+        public int DespesaId { get; set; }
 
         [Required(ErrorMessage = "Digite o nome da Despesa!")] // mensagem de erro caso o usuario tente adicionar os campos sem valores.
         public string? Despesa { get; set; }
@@ -21,5 +22,8 @@ namespace SistemaPessoal.Models
         public DateTime Vencimento { get; set; } 
 
         public string? Paga {  get; set; }
+
+        // Relacionando a despesa com o usuário
+        public string UserId { get; internal set; }  // Armazena o ID do usuário logado
     }
 }

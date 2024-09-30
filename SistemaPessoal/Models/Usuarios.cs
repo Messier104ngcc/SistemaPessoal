@@ -1,23 +1,33 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SistemaPessoal.Enum;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace SistemaPessoal.Models
 {
     public class Usuarios
     {
-        public int? Id { get; set; }
+        [Key]
+        public int? UserId { get; set; }
 
-        [Required(ErrorMessage = "Digite seu nome completo!")]
+        [Required(ErrorMessage = "⚠")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Digite um usuario!")]
+        [Required(ErrorMessage = "⚠")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Digite uma senha!")]
+        [Required(ErrorMessage = "⚠")]
+        public string Email { get; set; }
+
+        public PerfilEnum Perfil { get; set; }
+
+        [Required(ErrorMessage = "⚠")]
         public string Senha { get; set; }
 
-
-        [Required(ErrorMessage = "Confirme a Senha")]
+        [Required(ErrorMessage = "⚠")]
         public string ConfSenha { get; set; }
+
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        public DateTime? DataAtualização {  get; set; } = DateTime.Now;
     }
 }

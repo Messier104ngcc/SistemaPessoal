@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Tema Flatly.css.css" asp-append-version="true" />  @* caminho do css da pagina *@
     <link rel="stylesheet" href="~/css/HomeNewStyleSheet.css" asp-append-version="true"/>
+    @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> @*  importando icones para o projeto *@
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.6/datatables.min.css" rel="stylesheet"> @* importando datatables para poder gerar os filtros  *@
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none"/> @* exportando a biblioteca de icones para mensagens de sucesso que aparecrá para o usuario apois ele fazer um alteração qualquer nos dados *@
@@ -21,12 +22,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house mx-2"></i>Inicio</a>
+                    <ul class="nav-list">
+                        <li>
+                            <a class="nav-link text-light m-2" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house mx-2"></i>Inicio</a>
                         </li>
-                        <li class="nav-item Despesas">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Despesas" asp-action="Index"><i class="bi bi-person-vcard-fill mx-2"></i>Despesas</a>
+                        <li>
+                            <a class="nav-link text-light m-2" asp-area="" asp-controller="Despesas" asp-action="Index"><i class="bi bi-person-vcard-fill mx-2"></i>Despesas</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light m-2" asp-area="" asp-controller="Bancos" asp-action="Index"><i class="bi bi-bank2 m-2"></i>Bancos</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light m-2" asp-area="" asp-controller="Agendamento" asp-action="Index"><i class="bi bi-calendar-check-fill m-2"></i>Agendamento</a>
                         </li>
                     </ul>
                     <h1 id="Usuario" atl="Usuario">Bem-vindo, @User.Identity.Name!</h1>

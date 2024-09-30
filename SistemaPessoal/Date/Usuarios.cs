@@ -9,7 +9,7 @@ namespace SistemaPessoal.Date
         {
             builder.ToTable("Usuarios");
 
-            builder.HasKey(t => t.Id);
+            builder.HasKey(t => t.UserId);
 
             builder.Property(t => t.Nome).HasColumnType("varchar(20)");
             builder.Property(t => t.UserName).HasColumnType("varchar(50)");

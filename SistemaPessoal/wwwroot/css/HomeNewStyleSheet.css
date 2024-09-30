@@ -12,22 +12,39 @@ body {
 
 main {
     height:100%;
-    width: 100%; /* Largura em relação ao tamanho da tela */
-    max-width: 1200px; /* Limita a largura máxima */
-    min-width: 300px; /* Limita a largura mínima */
-    padding: 20px; /* Espaçamento interno */
-    margin: 0 auto; /* Centraliza o main horizontalmente */
-    background-color: #f0f0f0; /* Cor de fundo para visualização */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-    border: 1px solid #ccc; /* Borda opcional */
+    width: 110%; 
+    max-width: 1200%; 
+    min-width: 300px; 
+    padding: 10px; 
+    margin: 0 auto; 
+    background-color: #f0f0f0; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ccc; 
 }
 
 
+.nav-list {
+    list-style-type: none; /* Remove as bolinhas da lista */
+    padding: 0;
+    width: 100%; /* Ocupar a largura total do menu */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: flex;
+    gap: 2%;
+}
+
+    .nav-list li a:hover {
+        background-color: #DBDBE1; /* Fundo cinza claro ao passar o mouse */
+    }
+
 #Usuario {
+    display: flex;
+    align-items: center;
     font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #DBDBE1;
-    padding-right: 50px;
+    white-space: nowrap;
+    padding-bottom: 10;
 }
 
 .content {
@@ -50,8 +67,8 @@ main {
     }
 
 h1 {
-    padding-top: 1%;
-    align-items: initial;
+    padding-top: 0%;
+    justify-content: flex-start;
     display: flex;
 }
 
@@ -97,12 +114,71 @@ img {
     display: inline-block;
     position: relative;
     list-style-type: none;
-    padding: 10px;
     font-size: 20px;
     margin: 0px;
+    white-space: nowrap;
 }
 
     .nav-list2 li a:hover {
         background-color: #DBDBE1; /* Fundo cinza claro ao passar o mouse */
     }
 
+.card-corpo {
+    display: grid;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: "Open Sans", sans-serif;
+    grid-template-columns: 1fr 1fr; /* Cria duas colunas com tamanhos iguais */
+    gap: 50%; /* Espaço entre os cards */
+}
+
+#btn-despesa {
+    width: 100%;
+    padding: 10px;
+    background-color: #086EBA;
+    border-color: #086EBA;
+}
+
+#btn-imprimir {
+    width: 20%;
+    padding: 10px;
+    background-color: #086EBA;
+    border-color: #086EBA;
+}
+
+.cards {
+    align-items: center;
+    display: grid;
+    background-color: white;
+    width: 40%;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    grid-template-columns: 1fr 1fr; /* Cria duas colunas com tamanhos iguais */
+    gap: 10%; /* Espaço entre os cards */
+}
+
+.saldo-tela {
+    padding-left: 10px;
+}
+    .saldo-tela > p {
+        display: grid;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+    }
+
+h4 {
+    margin: 0; /* Remove margens padrão do h4 */
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+#Despesas {
+    white-space: nowrap;
+}

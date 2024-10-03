@@ -13,8 +13,12 @@ namespace SistemaPessoal.Date
 
             builder.Property(t => t.Nome).HasColumnType("varchar(20)");
             builder.Property(t => t.UserName).HasColumnType("varchar(50)");
+            builder.Property(t => t.Email).HasColumnType("varchar(50)");
+            builder.Property(t => t.Perfil).HasColumnType("enum");
             builder.Property(t => t.Senha).HasColumnType("varchar(14)");
             builder.Property(t => t.ConfSenha).HasColumnType("varchar(14)");
+            builder.Property(t => t.DataCadastro).HasColumnType("DateTime");
+            builder.Property(t => t.DataAtualização).HasColumnType("DateTime");
         }
 
     }

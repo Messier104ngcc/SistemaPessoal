@@ -24,6 +24,6 @@ namespace SistemaPessoal.Models
         public string? Paga {  get; set; }
 
         // Relacionando a despesa com o usuário
-        public string UserId { get; internal set; }  // Armazena o ID do usuário logado
+        public string? UserId { get; internal set; }  // Armazena o ID do usuário logado
     }
 }

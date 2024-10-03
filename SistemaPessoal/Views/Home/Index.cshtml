@@ -1,6 +1,6 @@
 ﻿
 @using SistemaPessoal.Models
-@model IEnumerable<DespesasModel>
+@model ViewModel
 
 
 
@@ -24,7 +24,7 @@
 
             @if (Model != null)
             {
-                @foreach (var despesa in Model)
+                @foreach (var despesa in Model.Despesas)
                 {
                     <tr>
                         <td>

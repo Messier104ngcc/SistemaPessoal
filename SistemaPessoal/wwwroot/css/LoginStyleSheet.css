@@ -15,21 +15,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 5%;
 }
 
 #logo {
-    height: 100%;
-    width: 100%;
-    padding-left: 10%;
+    height: auto;
+    width: auto;
+    max-width: 100%;
 }
 
 .container {
     display: flex;
-    width: 100%; /* Mantém a largura em 100% do elemento pai */
+    /*width: 100%;*/ /* Mantém a largura em 100% do elemento pai */
     height: 100%;
     max-width: 1400px; /* Aumenta o max-width */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #2D2D3E;
+    /*background-color: #2D2D3E;*/
     padding: 20px; /* Adiciona um padding interno */
     margin: 0 auto; /* Centraliza o container */
     box-sizing: border-box; /* Garante que o padding e a borda sejam incluídos na largura total */
@@ -44,7 +45,7 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
     .left-panel .logo {
@@ -65,7 +66,8 @@ body {
 .social-icons {
     display: flex;
     position: absolute;
-    padding-left: 10px;
+    top: 15%;
+    padding-left: 1%;
 }
 
     .social-icons a {
@@ -182,7 +184,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 4%;
+    padding-top: 1%;
     background-color: #F7F7F7;
     width: 20%;
 }
@@ -229,6 +231,7 @@ footer {
 
 
 .alert {
+    position: absolute;
     padding: 15px;
     margin-bottom: 20px;
     border: 1px solid transparent;
@@ -239,6 +242,7 @@ footer {
 }
 
 .alert-danger {
+    position:absolute;
     color: black;
     background-color: #dc3545; /* Vermelho */
     border-color: #dc3545;
@@ -256,6 +260,7 @@ footer {
 }
 
 .alert-erro {
+    position: absolute;
     padding: 15px;
     margin-bottom: 20px;
     border: 1px solid transparent;

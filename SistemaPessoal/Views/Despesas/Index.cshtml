@@ -1,5 +1,7 @@
 ﻿
-@model IEnumerable<DespesasModel>
+@model ViewModel
+
+
 
 <div class="container">
     <div class="card-corpo">
@@ -31,7 +33,7 @@
     <div class="cards">
         <div class="saldo-tela">
             <p>Saldo Atual</p>
-            <h4 class="Saldo"><i class="bi bi-cash-coin mx-3"></i>""</h4>         
+            <h4 class="Saldo"><i class="bi bi-cash-coin mx-3"></i>@Model.Saldo.ToString()</h4>         
         </div>
         <div class="custom-select">
             <select>
@@ -58,7 +60,7 @@
 
         @if(Model != null)
         {
-            @foreach(var despesa in Model)
+            @foreach(var despesa in Model.Despesas)
             {
                 <tr>
                     <td>

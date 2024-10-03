@@ -18,11 +18,21 @@ namespace SistemaPessoal.Controllers
             _db = db;
         }
         public IActionResult Index()
-        {
-            // comando para pegar todos os registros do banco ou SELECT * FROM
-            IEnumerable<DespesasModel> despesa = _db.DespesasModel;
-
-            return View(despesa);
+        {         
+            try
+            {
+                var viewModel = new ViewModel
+                {
+                    Saldo = _db.Contas_Bancarias.Sum(t => t.Saldo_Inicial), // Calcula a soma total
+                    Despesas = _db.DespesasModel.ToList()
+                };
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                ViewBag.MensagemErro = "❌ Tempo limite excedido com o servidor, contate o suporte.";
+                return View("Index");
+            }
         }
 
         // metodo que abre a tela de cadastro de despesas, junto com o formulario.
@@ -35,18 +45,26 @@ namespace SistemaPessoal.Controllers
         [HttpPost] // tornando o metodo em post, assim será possivel que todas as informacçoes digitadas sejam salvas no banco de dados.
         public IActionResult Cadastrar(DespesasModel despesas)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _db.DespesasModel.Add(despesas); // adicionado todas as informações no banco.
-                _db.SaveChanges(); // salvando as informações no banco.
+                if (ModelState.IsValid)
+                {
+                    _db.DespesasModel.Add(despesas); // adicionado todas as informações no banco.
+                    _db.SaveChanges(); // salvando as informações no banco.
 
-                TempData["MensagemSucesso"] = "Despesas cadastrada!"; // mensagem mostranado ao usuario que o cadastro deu certo.
+                    TempData["MensagemSucesso"] = "Despesas cadastrada!"; // mensagem mostranado ao usuario que o cadastro deu certo.
 
-                return RedirectToAction("Index"); // apos der tudo certo, retonara para tela Aluno/Index.
+                    return RedirectToAction("Index"); // apos der tudo certo, retonara para tela Aluno/Index.
+                }
+
+                TempData["MensagemErro"] = "Ocorreu algum erro ao Cadastrar a despesa!";
+                return View(); // caso der alguma erro, ou o ususario não preencheu as informações certas, permanecerá na tela ate que estja tudo ok.
             }
-
-            TempData["MensagemErro"] = "Ocorreu algum erro ao Cadastrar a despesa!";
-            return View(); // caso der alguma erro, ou o ususario não preencheu as informações certas, permanecerá na tela ate que estja tudo ok.
+            catch (Exception)
+            {
+                ViewBag.MensagemErro = "❌ Erro inesperado. Contate o suporte.";
+                return View("CadastroIndex");
+            }
         }
 
 

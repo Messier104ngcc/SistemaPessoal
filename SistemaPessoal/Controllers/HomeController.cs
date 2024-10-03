@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using SistemaPessoal.Date;
 using SistemaPessoal.Models;
 using System.Security.Claims;
@@ -17,12 +18,22 @@ namespace SistemaPessoal.Controllers
         }
         public IActionResult Index()
         {
-            string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            // Filtra as despesas pelo ID do usuário
-            IEnumerable<DespesasModel> despesa = _db.DespesasModel.Where(t => t.UserId == UserId);
-
-            return View("Index");
+            try
+            {
+                var viewModel = new ViewModel
+                {
+                    Despesas = _db.DespesasModel.ToList()
+                };
+                return View(viewModel);
+            }
+            catch (SqlException)
+            {
+                return StatusCode(500, "Ocorreu um erro ao processar sua solicitação. Tente novamente mais tarde.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Erro inesperado. Contate o suporte.");
+            }
         }
     }
 }

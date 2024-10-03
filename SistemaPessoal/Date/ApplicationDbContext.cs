@@ -22,7 +22,7 @@ namespace SistemaPessoal.Date
 
         public DbSet<Models.Usuarios> Login { get; set; }
 
-        public DbSet<Models.Contas_Bancarias> Contas_Bancarias { get; set; }
+        public DbSet<Contas_Bancarias> Contas_Bancarias { get; set; }
 
     }
 }

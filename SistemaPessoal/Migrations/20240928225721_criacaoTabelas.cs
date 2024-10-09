@@ -27,7 +27,7 @@ namespace SistemaPessoal.Migrations
                 name: "DespesasModel",
                 columns: table => new
                 {
-                    DespesaId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Despesa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -38,7 +38,7 @@ namespace SistemaPessoal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DespesasModel", x => x.DespesaId);
+                    table.PrimaryKey("PK_DespesasModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

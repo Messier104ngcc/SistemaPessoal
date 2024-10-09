@@ -1,9 +1,7 @@
 ﻿using SistemaPessoal.Date;
 using SistemaPessoal.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
 namespace SistemaPessoal.Controllers
 {
@@ -13,6 +11,7 @@ namespace SistemaPessoal.Controllers
     {
         readonly private ApplicationDbContext _db;
         // buscanco o registro do banco
+
         public DespesasController(ApplicationDbContext db) 
         { 
             _db = db;
@@ -70,14 +69,14 @@ namespace SistemaPessoal.Controllers
 
         // metdo que vem com o Id selecionado do banco de dados.
         [HttpGet]
-        public IActionResult Editar(int? DespesaId) 
+        public IActionResult Editar(int? Id) 
         {
-            if (DespesaId == null || DespesaId == 0) 
+            if (Id == null || Id == 0) 
             {
                 return NotFound();
             }
 
-            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.DespesaId == DespesaId); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == Id); // basicamento é um comando WHERE da tabela na coluna ID.
 
             if (despesa == null) 
             {
@@ -89,15 +88,15 @@ namespace SistemaPessoal.Controllers
         
         // metdo que vem com o Id selecionado do banco de dados.
         [HttpGet]
-        public IActionResult Excluir(int? DespesaId)
+        public IActionResult Excluir(int? Id)
         {
 
-            if (DespesaId == null || DespesaId == 0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
 
-            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.DespesaId == DespesaId); // basicamento é um comando WHERE da tabela na coluna ID.
+            DespesasModel despesa = _db.DespesasModel.FirstOrDefault(x => x.Id == Id); // basicamento é um comando WHERE da tabela na coluna ID.
 
             if (despesa == null)
             {
@@ -115,8 +114,6 @@ namespace SistemaPessoal.Controllers
         {
             if (ModelState.IsValid) 
             {
-                string Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
                 _db.DespesasModel.Update(despesa); // atualizando as informações do banco
                 _db.SaveChanges(); // salvando as informações atualizadas
 
@@ -125,9 +122,9 @@ namespace SistemaPessoal.Controllers
                 return RedirectToAction("Index");
             }
 
-            TempData["MensagemErro"] = "Ocorreu algum erro de edicção das informações!"; // mensagem de erro caso ocorra agum erro apois salvar as alterações.
+            TempData["MensagemErro"] = "Ocorreu algum erro de edição das informações!"; // mensagem de erro caso ocorra agum erro apois salvar as alterações.
 
-            return View(despesa);
+            return RedirectToAction("Index");
         }
         
 

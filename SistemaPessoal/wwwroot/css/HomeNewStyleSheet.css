@@ -6,20 +6,21 @@
 body {
     height: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    align-items: baseline;
+    gap: 20px;
 }
 
 main {
     height:100%;
-    width: 110%; 
+    width: 120%; 
     max-width: 1200%; 
     min-width: 300px; 
     padding: 10px; 
     margin: 0 auto; 
     background-color: #f0f0f0; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-    border: 1px solid #ccc; 
+    border-radius: 5px;
 }
 
 
@@ -29,8 +30,8 @@ main {
     width: 100%; /* Ocupar a largura total do menu */
     text-align: justify;
     letter-spacing: 0.5px;
-    display: flex;
-    gap: 2%;
+    display: grid;
+    gap: 20%;
 }
 
     .nav-list li a:hover {
@@ -44,19 +45,18 @@ main {
     font-family: "Open Sans", sans-serif;
     color: #DBDBE1;
     white-space: nowrap;
-    padding-bottom: 10;
+    padding-bottom: 10px;
 }
 
 .content {
     flex: 1;
 }
 
-.footer {
+.footer > container-footer {
     width: 100%;
     text-align: justify;
     padding: 10px;
     background-color: #3C3E43; /* Cor de fundo do footer */
-    position: relative;
     bottom: 0;
 }
 
@@ -183,4 +183,131 @@ h4 {
 
 #Despesas {
     white-space: nowrap;
+}
+
+.header-prymary {
+    background-color: black;
+    position: fixed; /* Fixa o menu na lateral */
+    width: 250px; /* Largura do menu */
+    height: 100vh; /* Altura de 100% da viewport */
+    background-color: #3C3E43; /* Fundo predefinido */
+    color: white;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: center;
+}
+
+.container-fluid {
+    padding-right: 0;
+    text-align: center;
+}
+
+.nav-list {
+    list-style-type: none; /* Remove as bolinhas da lista */
+    padding: 0;
+    width: 100%; /* Ocupar a largura total do menu */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+    .nav-list li a:hover {
+        background-color: #DBDBE1; /* Fundo cinza claro ao passar o mouse */
+        padding: 10px;
+        touch-action: pinch-zoom;
+    }
+
+.nav-top {
+    list-style-type: none; /* Remove as bolinhas da lista */
+    padding: 0;
+    width: 100%; /* Ocupar a largura total do menu */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.nav-list2 {
+    width: 100%; /* Ocupar a largura total do menu */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 30px;
+}
+
+    .nav-list2 li a:hover {
+        background-color: #DBDBE1; /* Fundo cinza claro ao passar o mouse */
+        padding: 10px;
+        touch-action: pinch-zoom;
+    }
+
+    .nav-list2 > li {
+        display: inline-block;
+    }
+
+
+
+.footer > hr {
+    width: 80%; /* Diminui a largura da linha (50% da largura da página) */
+    height: 2px; /* Define a espessura da linha */
+    background-color: #333; /* Cor da linha */
+    border: none; /* Remove qualquer borda padrão */
+    margin-right: 25%;
+}
+
+#f {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens com espaço entre eles */
+    align-items: center; /* Alinha verticalmente */
+    padding: 10px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 6px;
+    left: 15%;
+    text-align: left;
+    padding: 0.1px;
+}
+
+#h2 {
+    text-align: end;
+    padding: 10px;
+    margin-left: 0;
+    background-color: #DBDBE1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 10px 5px; /* Reduz o padding em telas menores */
+        font-size: 0.875rem; /* Diminui o tamanho da fonte em telas menores */
+    }
+
+    @media (max-width: 768px) {
+        .footer h1 {
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer h1 {
+            font-size: 1rem;
+        }
+
+        .footer {
+            padding: 10px;
+        }
+    }
+
+    .content {
+        padding-bottom: 840px;
+    }
 }

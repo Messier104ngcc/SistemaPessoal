@@ -4,8 +4,6 @@
     align-items: center;
     background-color: white;
     justify-content: space-between; /* Espaça os itens de forma uniforme */
-    top: -90px; /* Move para baixo */
-    left: 0px; /* Move para a direita */
     bottom: 200px;
     margin: 10px;
     width: 100%;

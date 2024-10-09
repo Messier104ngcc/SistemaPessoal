@@ -13,15 +13,12 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none"/> @* exportando a biblioteca de icones para mensagens de sucesso que aparecrá para o usuario apois ele fazer um alteração qualquer nos dados *@
 </head>
 <body class="body">
-    <header>
-        <nav id="navbar-link" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-50">
+     <header class="header-prymary">
+        <nav class="navbar-link">
             <div class="container-fluid">
-                <img class="img-logo" atl="Imagem Logo" src="/img/LOGO.png" />
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <img class="img" src="/img/LOGO.png" />
+                    <hr id="linha1" />
+                <div class="navbar-link2">
                     <ul class="nav-list">
                         <li>
                             <a class="nav-link text-light m-2" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house mx-2"></i>Inicio</a>
@@ -36,7 +33,9 @@
                             <a class="nav-link text-light m-2" asp-area="" asp-controller="Agendamento" asp-action="Index"><i class="bi bi-calendar-check-fill m-2"></i>Agendamento</a>
                         </li>
                     </ul>
-                    <h1 id="Usuario" atl="Usuario">Bem-vindo, @User.Identity.Name!</h1>
+                    <div id="f">
+                        <h1 id="Usuario" atl="Usuario">Bem-vindo, @User.Identity.Name!</h1>
+                    </div>
                     <ul class="nav-list2">
                         <li>
                             <a class="nav-link text-light m-2" asp-controller="Login" asp-action="Sair"><i class="bi bi-box-arrow-right mx-2"></i>Sair</a>
@@ -54,12 +53,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="footer">
-        <div class="container-footer">
-            Copyrights © 2024 - Todos os direitos reservados
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

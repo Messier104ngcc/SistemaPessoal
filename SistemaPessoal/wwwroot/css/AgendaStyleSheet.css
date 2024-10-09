@@ -1,0 +1,114 @@
+﻿/* Define o layout principal da página */
+.main2 {
+    display: flex;
+    justify-content: space-between; /* Espaçamento entre os blocos */
+    padding: 20px;
+    gap: 20px; /* Espaçamento horizontal entre os elementos */
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 1%;
+}
+
+#container1 {
+    flex: 10%;
+}
+
+#container2 {
+    height: 10%;
+    width: 25%;
+}
+
+.form-wrapper1, .form-wrapper2 {
+    flex: 1; /* Os formulários terão menos espaço */
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Estilo para o título e navegação do calendário */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* Botões de navegação do calendário */
+.navigation button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .navigation button:hover {
+        background-color: #0056b3;
+    }
+
+/* Botões de visualização (Dia, Semana, Mês) */
+.btn-select {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .btn-select button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-select button:hover {
+            background-color: #0056b3;
+        }
+
+/* Estilo dos formulários */
+form {
+    display: flex;
+    height: 5%;
+    flex-direction: column;
+    gap: 5px; /* Espaçamento entre os campos do formulário */
+}
+
+    /* Labels e inputs dos formulários */
+    form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    form input, form select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    form button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        form button:hover {
+            background-color: #0056b3;
+        }

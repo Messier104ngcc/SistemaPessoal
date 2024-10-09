@@ -1,13 +1,12 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 // referencia a uma coluna no banco de dados.
 namespace SistemaPessoal.Models
 {
     public class DespesasModel
     {
-        [Key]
-        public int DespesaId { get; set; }
+        [Required]
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Digite o nome da Despesa!")] // mensagem de erro caso o usuario tente adicionar os campos sem valores.
         public string? Despesa { get; set; }
@@ -23,7 +22,7 @@ namespace SistemaPessoal.Models
 
         public string? Paga {  get; set; }
 
-        // Relacionando a despesa com o usuário
-        public string? UserId { get; internal set; }  // Armazena o ID do usuário logado
+        //// Relacionando a despesa com o usuário
+        //public string? UserId { get; internal set; }  // Armazena o ID do usuário logado
     }
 }

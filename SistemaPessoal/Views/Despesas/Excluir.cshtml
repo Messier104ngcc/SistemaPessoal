@@ -1,4 +1,4 @@
-﻿@using SistemaPessoal.Models
+﻿
 @model DespesasModel
 
 @* informando para a tela que ela vai receber os dados direto dessa calsse, no campos que o usuario digitar *@
@@ -17,9 +17,9 @@
 
     @*     A utilização do method="post" indica que apois clicar no botão adicionar do formulario, todas as informações vão ser transferidas para o metodo cadastrar no AlunoController, e vão ser salvas no banco de dados
     *@
-    <form method="post" asp-asp-controller="Despesas" asp-action="Excluir">
+    <form method="post" asp-controller="Despesas" asp-action="Excluir">
 
-        <input type="hidden" asp-for="DespesaId" /> @* pegando o Id da tabela, mais não mostra no formulario *@
+        <input type="hidden" asp-for="Id" /> @* pegando o Id da tabela, mais não mostra no formulario *@
 
         <h2 class="text-light">Deseja Realmente Excluir esse Registro?</h2>
 
@@ -44,7 +44,7 @@
 
         <div class="mb-3">
             <label for="Vencimento" class="form-label text-light">Vencimento</label>
-            <input type="text" class="form-control" asp-for="Vencimento" id="Vencimento" placeholder="Data de Vencimento">
+            <input type="text" class="form-control" asp-for="Vencimento" id="Vencimento" placeholder="Data de Vencimento" disabled>
             <span class="text-danger" asp-validation-for="Vencimento"></span>
         </div>
 

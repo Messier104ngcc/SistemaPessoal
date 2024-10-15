@@ -33,21 +33,24 @@
                             <a class="nav-link text-light m-2" asp-area="" asp-controller="Agendamento" asp-action="Index"><i class="bi bi-calendar-check-fill m-2"></i>Agendamento</a>
                         </li>
                     </ul>
-                    <div id="f">
-                        <h1 id="Usuario" atl="Usuario">Bem-vindo, @User.Identity.Name!</h1>
-                    </div>
                     <ul class="nav-list2">
                         <li>
                             <a class="nav-link text-light m-2" asp-controller="Login" asp-action="Sair"><i class="bi bi-box-arrow-right mx-2"></i>Sair</a>
                         </li>
                     </ul>
                 </div>
+                <hr id="linha1" />
             </div>
             <div class="container-fluid-2">
 
             </div>
         </nav>
     </header>
+    <footer>
+        <div id="f">
+            <h1 id="Usuario" atl="Usuario">Bem-vindo, @User.Identity.Name!</h1>
+        </div>
+    </footer>
     <div class="container">
         <main role="main" class="main">
             @RenderBody()

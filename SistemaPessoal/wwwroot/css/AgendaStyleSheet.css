@@ -14,21 +14,24 @@
 
 #container1 {
     flex: 10%;
+    width: 5%;
 }
 
 #container2 {
+    display: flex;
     height: 10%;
-    width: 25%;
+    width: 50%;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .form-wrapper1, .form-wrapper2 {
-    flex: 1; /* Os formulários terão menos espaço */
     background-color: #fff;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: calc(50% - 5px); /* Deixa cada form com metade da largura menos um pequeno ajuste para o gap */
 }
 
 /* Estilo para o título e navegação do calendário */

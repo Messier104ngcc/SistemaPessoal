@@ -2,10 +2,15 @@
 @using SistemaPessoal.Models
 @model ViewModel
 
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/AgendaStyleSheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/HomeNewStyleSheet.css" asp-append-version="true" />
+}
 
 <div class="text-center">
-    <h1>Visão geral<i class="bi bi-tv-fill mx-3"></i></h1>
+    <div class="card-corpo">
+        <h1>Visão geral<i class="bi bi-tv-fill mx-3"></i></h1>
+    </div>
 
     <table id="Despesas" class="table table-hover">
         @* dando um ID para tabela, para poder estár usando os filtros já exportados *@
@@ -49,8 +54,9 @@
             }
         </tbody>
     </table>
-
-    <h2>Agendamentos<i class="bi bi-journal-bookmark-fill mx-3"></i></h2>
+    <div class="card-corpo">
+        <h2>Agendamentos<i class="bi bi-journal-bookmark-fill mx-3"></i></h2>
+    </div>
 
     <div class="container-agendamentos">
         <div class="quadrado">Texto 1</div>

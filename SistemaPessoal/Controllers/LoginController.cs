@@ -92,54 +92,5 @@ namespace SistemaPessoal.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Login");
         }
-
-
-        public IActionResult Cadastrar()
-        {
-            return View("CadastroIndex");
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> CadastrarUsuario(Models.Usuarios model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (_db.Login.Any(t => model.Senha != model.ConfSenha))
-                    {
-                        ViewBag.MensagemErro = "❌ Senhas não coincidem!";
-                        return View("CadastroIndex");
-                    }
-
-                    if(_db.Login.Any(t => t.Email == model.Email))
-                    {
-                        ViewBag.Mensagem = " ⚠ Email já cadastrado, tente outro email.";
-                        return View("CadastroIndex");
-                    }
-                    // Verificar se o usuário já existe
-                    if (_db.Login.Any(t => t.UserName == model.UserName))
-                    {
-                        ViewBag.Mensagem = " ⚠ Nome de usuário já existente.";
-                        return View("CadastroIndex");
-                    }
-                    else
-                    {
-                        _db.Login.Add(model);
-                        await _db.SaveChangesAsync();
-                        return RedirectToAction("Index", "Login"); // Redirecionar para a página inicial ou outra página
-                    }
-                }
-
-                // Se houver erros, reexibir o formulário
-                ViewBag.MensagemErro = "❌ Faltam campos a serem preenchidos.";
-                return View("CadastroIndex");
-            }
-            catch(Exception)
-            {
-                ViewBag.MensagemErro = "❌ Erro inesperado. Contate o suporte.";
-                return View("CadastroIndex");
-            }
-        }
     }
 }

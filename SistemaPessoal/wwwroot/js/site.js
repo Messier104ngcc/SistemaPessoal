@@ -57,4 +57,9 @@ function formatarData(input) {
     }
 }
 
+function redirecionar(opcaoSelecionada) {
+    if (opcaoSelecionada) {
+        window.location.href = "/Config/" + opcaoSelecionada;
+    }
+}
 

@@ -31,8 +31,17 @@
                         </li>
                         <li>
                             <a class="nav-link text-light m-2" asp-area="" asp-controller="Agendamento" asp-action="Index"><i class="bi bi-calendar-check-fill m-2"></i>Agendamento</a>
-                        </li>
+                        </li>               
                     </ul>
+
+                    <label for="configuracoes">Configurações<i class="bi bi-gear-fill m-2"></i></label>
+                    <select id="configuracoes" name="configuracao" onchange="redirecionar(this.value)">
+                        <option value="">-- Selecione --</option>
+                        <option value="GerenciamentoUsuario"><i class="bi bi-person-gear"></i>Gerenciamento de Usuários</option>
+                        <option value="Configuracao2">Configuração 2</option>
+                        <option value="Configuracao3">Configuração 3</option>
+                    </select>
+
                     <ul class="nav-list2">
                         <li>
                             <a class="nav-link text-light m-2" asp-controller="Login" asp-action="Sair"><i class="bi bi-box-arrow-right mx-2"></i>Sair</a>

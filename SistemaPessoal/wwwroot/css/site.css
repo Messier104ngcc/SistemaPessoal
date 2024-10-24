@@ -9,10 +9,25 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-size: 1rem; /* Tamanho da fonte base, ajustável */
 }
 
 body {
-  margin-bottom: 60px;
+    display: flex;
+    flex-direction: column; /* Ajusta o layout para colunas em telas menores */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Em telas menores, manter a direção em coluna */
+        padding: 1rem;
+    }
+}
+
+
+

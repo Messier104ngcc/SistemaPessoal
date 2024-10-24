@@ -1,0 +1,89 @@
+﻿@model Usuarios
+
+@{
+    ViewData["title"] = "Cadastro de Usuários";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/CadastroStyleSheet.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="container">
+    <div class="card-corpo">
+        <h4>Cadastro de Usuários</h4>
+    </div>
+    <form asp-controller="Config" asp-action="CadastrarUsuario" method="post" autocomplete="off">
+        @* caminho para onde o formulario deve ir *@
+        @if (TempData["MensagemSucesso"] != null) @* logica e estilização da mensagem de sucesso apois qualquer alteração nos dados pelo o usuario *@
+        {
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+
+                <symbol id="info-fill" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    @TempData["MensagemSucesso"]
+                </symbol>
+            </div>
+        }
+        @if (TempData["MensagemErro"] != null) @* logica e estilização da mensagem de erro caso qualquer alteração nos dados não tenha exito no salvamento *@
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+                <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    @TempData["MensagemErro"]
+                </symbol>
+            </div>
+        }
+        <form>
+            <div class="form-group">
+                <label for="nome"><i class="bi bi-person-badge-fill"></i></label>
+                <input type="text" asp-for="Nome" id="nome" name="nome" placeholder="Digite seu nome completo">
+                <span class="text-danger" asp-validation-for="Nome"></span>
+            </div>
+            <div class="form-group">
+                <label for="username"><i class="bi bi-person-fill"></i></label>
+                <input type="text" asp-for="UserName" id="username" name="username" placeholder="Digite um usuário">
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="bi bi-envelope-at-fill"></i></label>
+                <input type="text" asp-for="Email" id="email" name="email" placeholder="Digite seu email">
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-group">
+                <label for="senha"><i class="bi bi-key-fill"></i></label>
+                <div class="password-container">
+                    <input type="password" asp-for="Senha" id="senha" name="senha" placeholder="Digite uma senha">
+                    <span class="eye-icon" id="togglePassword" onclick="togglePassword('senha', 'togglePassword')">
+                        🙈
+                    </span>
+                </div>
+                <span class="text-danger" asp-validation-for="Senha"></span>
+            </div>
+            <div class="form-group">
+                <label for="confsenha"><i class="bi bi-key-fill"></i></label>
+                <div class="password-container">
+                    <input type="password" asp-for="ConfSenha" id="confsenha" name="confsenha" placeholder="Confirmar senha">
+                    <span class="eye-icon" id="toggleConfPassword" onclick="togglePassword('confsenha', 'toggleConfPassword')">
+                        🙈
+                    </span>
+                </div>
+                <span class="text-danger" asp-validation-for="ConfSenha"></span>              
+            </div>
+            <div class="button-group">
+                <button class="btn">
+                    <a class="link-voltar" type="button" asp-controller="Config" asp-action="GerenciamentoUsuario">Voltar</a>
+                </button>
+                <button type="submit" class="btn">Cadastrar</button>
+            </div>
+        </form>
+    </form>
+</div>
+
+<script src="~/js/Login.js" asp-append-version="true"></script>
+
+                   

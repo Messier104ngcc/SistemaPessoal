@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
-
 body {
     height: 100%;
     margin: 0;
@@ -11,17 +10,41 @@ body {
     gap: 20px;
 }
 
-main {
-    height:100%;
-    width: 110%; 
-    max-width: 1200%; 
-    min-width: 300px; 
-    padding: 10px; 
-    margin: 0 auto; 
-    background-color: #f0f0f0; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-    border-radius: 5px;
+
+
+@media (max-width: 1200px) {
+    body {
+        gap: 15px; /* Menor espaçamento em telas menores */
+    }
 }
+
+@media (max-width: 768px) {
+    body {
+        gap: 10px; /* Ajuste o espaçamento para tablets */
+        padding: 5vw; /* Menor preenchimento em dispositivos móveis */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        gap: 5px; /* Muito menor espaçamento em telas pequenas */
+        padding: 2vw;
+    }
+}
+
+
+
+main {
+    width: 110%; /* Usar 100% da largura disponível */
+    max-width: 1200px; /* Limitar a largura máxima para telas grandes */
+    min-width: 300px; /* Garantir uma largura mínima para telas pequenas */
+    padding: 10px; /* Espaçamento interno consistente */
+    margin-left: 10%;
+    background-color: #f0f0f0; /* Cor de fundo */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 5px; /* Cantos arredondados */
+}
+
 
 
 .nav-list {
@@ -113,11 +136,6 @@ img {
 }
 
 .nav-list2 {
-    text-align: justify;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    list-style-type: none;
-    font-size: 20px;
     margin: 0px;
     white-space: nowrap;
     position: fixed;
@@ -125,6 +143,13 @@ img {
     left: 0;
     right: 0;
     width: 10px;
+    width: 10%; /* Ocupar a largura total do menu */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 30px
 }
 
 .card-corpo {
@@ -226,15 +251,6 @@ h4 {
     display: inline-block;
 }
 
-.nav-list2 {
-    width: 100%; /* Ocupar a largura total do menu */
-    text-align: justify;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    list-style-type: none;
-    padding: 10px;
-    font-size: 30px;
-}
 
 
 
@@ -273,33 +289,30 @@ h4 {
     font-size: 15px;
 }
 
-@media (max-width: 600px) {
-    footer {
-        padding: 10px 5px; /* Reduz o padding em telas menores */
-        font-size: 0.875rem; /* Diminui o tamanho da fonte em telas menores */
+div.dt-container {
+    font-size: 0.9rem; /* Tamanho de fonte relativo */
+}
+
+
+.td {
+    display: flex;
+    justify-content: space-between; /* Alinhamento horizontal para telas grandes */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+    .td a {
+        padding: 10px 20px; /* Tamanho e padding dos botões */
     }
 
-    @media (max-width: 768px) {
-        .footer h1 {
-            font-size: 1.2rem;
-        }
-
-        .footer {
-            padding: 15px;
-        }
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .td {
+        flex-direction: column; /* Muda para disposição em coluna */
+        align-items: center; /* Centraliza os botões */
     }
 
-    @media (max-width: 480px) {
-        .footer h1 {
-            font-size: 1rem;
+        .td a {
+            width: 100%; /* Faz os botões ocuparem 100% da largura da .td */
+            margin-bottom: 10px; /* Espaçamento entre os botões */
         }
-
-        .footer {
-            padding: 10px;
-        }
-    }
-
-    .content {
-        padding-bottom: 840px;
-    }
 }

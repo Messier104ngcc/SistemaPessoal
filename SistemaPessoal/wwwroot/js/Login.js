@@ -21,3 +21,17 @@ $(document).ready(function () {
     });
 
 });
+
+function togglePassword(fieldId, iconId) {
+    const passwordField = document.getElementById(fieldId);
+    const eyeIcon = document.getElementById(iconId);
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.innerHTML = '👁️'; // Muda o ícone para um ícone de "esconder"
+    } else {
+        passwordField.type = 'password';
+        eyeIcon.innerHTML = '🙈'; // Muda o ícone para um ícone de "mostrar"
+    }
+}
+

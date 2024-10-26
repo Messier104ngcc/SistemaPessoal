@@ -1,6 +1,11 @@
 ﻿
 @model Usuarios
 
+
+@{
+    ViewData["title"] = "Login";
+}
+
 @{
     Layout = null; // Remova o layout principal para a tela de login
 }
@@ -66,7 +71,7 @@
                                 </div>
                                 <div class="button-group">
                                     <button type="submit" class="btn">Entrar</button>
-                                    <a class="btn-cadastrar" type="button" asp-controller="Login" asp-action="Cadastrar">Cadastrar</a>
+                                <a class="btn-cadastrar" href="https://www.google.com">Cancelar</a>
                                 </div>
                                 <footer>
                                     <p>Copyright © 2024 - Todos os direitos reservados</p>

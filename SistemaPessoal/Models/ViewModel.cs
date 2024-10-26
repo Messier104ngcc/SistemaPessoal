@@ -1,6 +1,4 @@
-﻿using SistemaPessoal.Controllers;
-
-namespace SistemaPessoal.Models
+﻿namespace SistemaPessoal.Models
 {
     public class ViewModel
     {

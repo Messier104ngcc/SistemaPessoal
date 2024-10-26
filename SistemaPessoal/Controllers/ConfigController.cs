@@ -17,7 +17,7 @@ namespace SistemaPessoal.Controllers
         public IActionResult GerenciamentoUsuario()
         {
             Usuarios = _db.Login.ToList();
-            return View();
+            return View("GerenciamentoUsuario");
         }
 
         public IActionResult Cadastrar()

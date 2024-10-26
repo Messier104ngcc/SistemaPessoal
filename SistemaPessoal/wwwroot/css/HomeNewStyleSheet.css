@@ -316,3 +316,34 @@ div.dt-container {
             margin-bottom: 10px; /* Espaçamento entre os botões */
         }
 }
+
+
+#configuracoes {
+    width: 200px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #DBDBE1;
+    border-radius: 8px;
+    background-color: #3C3E43;
+    color: #DBDBE1;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    background-image: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/gear-fill.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+    #configuracoes:hover {
+        border-color: #007bff;
+    }
+
+    #configuracoes option {
+        background-color: #444;
+        color: #DBDBE1;
+    }
+

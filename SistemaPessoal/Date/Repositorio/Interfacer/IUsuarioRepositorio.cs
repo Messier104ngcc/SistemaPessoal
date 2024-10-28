@@ -1,12 +1,20 @@
 ﻿using SistemaPessoal.Models;
 
-namespace SistemaPessoal.Date.Repositorio.Interfacer
+namespace SistemaPessoal.Repositorio.Interfacer
 {
     public interface IUsuarioRepositorio
     {
-        List<Models.Usuarios> BuscarUsuario();
+        List<Usuarios> BuscarUsuario();
 
-        void CadastrarUsuario(Models.Usuarios usuarios);
+        Usuarios BuscarPorID(int id);
 
+        Usuarios CadastrarUsuario(Usuarios usuarios);
+
+        Usuarios Atualizar(Usuarios usuario);
+
+        bool Excluir (int id);
+
+        bool UsuarioExistePorNome(string userName);
+        bool UsuarioExistePorEmail(string email);
     }
 }

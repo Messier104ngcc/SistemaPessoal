@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using SistemaPessoal.Date;
-using SistemaPessoal.Date.Repositorio.Interfacer;
-using SistemaPessoal.Models;
+using SistemaPessoal.Repositorio.Interfacer;
 using System.Security.Claims;
-using System.Text;
+
 
 namespace SistemaPessoal.Controllers
 {
@@ -33,13 +30,14 @@ namespace SistemaPessoal.Controllers
         [HttpPost]
         public async Task<IActionResult> Entrar(string username, string senha)
         {
+            // Verificar se o usuário existe no banco de dados
+            var usuarioExistente = _db.Usuarios
+                        .Where(t => t.UserName == username && t.Senha == senha)
+                        .FirstOrDefault();
 
             try
             {
-                // Verificar se o usuário existe no banco de dados
-                var usuarioExistente = _db.Login
-                            .Where(t => t.UserName == username && t.Senha == senha)
-                            .FirstOrDefault();
+             
 
                 if (ModelState.IsValid)
                 {
@@ -82,7 +80,7 @@ namespace SistemaPessoal.Controllers
             catch (Exception)
             {
                 ViewBag.MensagemErro = "❌ Erro inesperado. Contate o suporte.";
-                return View("CadastroIndex");
+                return View("Index");
             }
         }
 

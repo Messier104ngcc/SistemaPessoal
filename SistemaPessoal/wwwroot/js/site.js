@@ -3,11 +3,16 @@
 // codigo refrente ao uso dos filtros na pagina
 $(document).ready(function () {
     // o que tiver dentro a function, vai ser rodado dentro da pagina junto ao JS.
+    getDatatable('#Despesas');
+    getDatatable('#TableUsuarios');
+})
 
-    $('#Despesas').DataTable({ // codogio onde é possivel está mudando a linguagem dos filtros ja estilizados.
+// função de formatação de tabela, onde qualquer outra view, pode tá usando, apenas declaranco no comando acima.
+function getDatatable(id) {
+    $(id).DataTable({ // codogio onde é possivel está mudando a linguagem dos filtros ja estilizados.
         language: {
             "decimal": "",
-            "emptyTable": "No data available in table",
+            "emptyTable": "Nehum Registro encontrado na tabela",
             "info": "Mostrando _START_ registro de _END_ em um totla de _TOTAL_ entradas",
             "infoEmpty": "Showing 0 to 0 of 0 entries",
             "infoFiltered": "(filtered from _MAX_ total entries)",
@@ -31,15 +36,18 @@ $(document).ready(function () {
         }
     });
 
-
     // função que irar comando o tempo que as mensagem de erro e sucesso apareceram para o usuario apois as alterações nas informações no banco de dados.
     setTimeout(function () { // resumindo, executa uma função depois de uma quantidade de tempo.
         $(".alert").fadeOut("slow", function () { // função que ele ira executar.
             $(this).alert('close');
         })
     }, 3000)
+}
 
-});
+
+ 
+
+
 
 function formatarData(input) {
     let valor = input.value;
@@ -59,7 +67,7 @@ function formatarData(input) {
 
 function redirecionar(opcaoSelecionada) {
     if (opcaoSelecionada) {
-        window.location.href = "/Config/" + opcaoSelecionada;
+        window.location.href = "/Usuarios/" + opcaoSelecionada;
     }
 }
 

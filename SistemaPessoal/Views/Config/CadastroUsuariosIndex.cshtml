@@ -1,4 +1,5 @@
-﻿@model Usuarios
+﻿@using SistemaPessoal.Enum
+@model Usuarios
 
 @{
     ViewData["title"] = "Cadastro de Usuários";
@@ -16,7 +17,7 @@
     <div class="card-corpo">
         <h4>Cadastro de Usuários</h4>
     </div>
-    <form asp-controller="Config" asp-action="CadastrarUsuario" method="post" autocomplete="off">
+    <form asp-controller="Usuario" asp-action="CadastrarUsuario" method="post" autocomplete="off">
         @* caminho para onde o formulario deve ir *@
         @if (TempData["MensagemSucesso"] != null) @* logica e estilização da mensagem de sucesso apois qualquer alteração nos dados pelo o usuario *@
         {
@@ -49,6 +50,15 @@
                 <input type="text" asp-for="UserName" id="username" name="username" placeholder="Digite um usuário">
                 <span class="text-danger" asp-validation-for="UserName"></span>
             </div>
+            @* <div class="form-group">
+                <label for="nome"><i class="bi bi-envelope-at-fill">Perfil</i></label>
+                <span class="text-danger" asp-validation-for="Perfil"></span>
+                <select asp-for="Perfil" class="form-control">
+                    <option value="0">Selecione</option>
+                    <option value="@PerfilEnum.Admin">Administrador</option>
+                    <option value="@PerfilEnum.Padrao">Padrão</option>
+                </select>
+            </div> *@
             <div class="form-group">
                 <label for="email"><i class="bi bi-envelope-at-fill"></i></label>
                 <input type="text" asp-for="Email" id="email" name="email" placeholder="Digite seu email">

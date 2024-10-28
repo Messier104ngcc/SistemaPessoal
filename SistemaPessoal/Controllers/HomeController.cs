@@ -18,11 +18,26 @@ namespace SistemaPessoal.Controllers
         }
         public IActionResult Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var usuarioId = User.Identity.Name;
+
             try
             {
                 var viewModel = new ViewModel
                 {
                     Despesas = _db.DespesasModel.ToList()
+
+                    // // Filtrando apenas as despesas do usuário logado
+                    //    Despesas = _db.DespesasModel
+                    //      .Where(d => d.UsuariosId == usuarioId)
+                    //      .ToList(),
+
+                    //// Filtrando apenas as contas bancárias do usuário logado
+                    //    Contas = _db.Contas_Bancarias
+                    //             .Where(c => c.UsuariosId == usuarioId)
+                    //             .ToList()
+
                 };
                 return View(viewModel);
             }

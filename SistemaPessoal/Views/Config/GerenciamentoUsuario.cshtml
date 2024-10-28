@@ -1,4 +1,4 @@
-﻿@model UsuariosModel
+﻿@model List<Usuarios>
 
 
 @{
@@ -37,7 +37,7 @@
         </div>
     }
 
-    <table id="Despesas" class="table table-hover">
+    <table id="TableUsuarios" class="table table-hover">
         @* dando um ID para tabela, para poder estár usando os filtros já exportados *@
         <thead>
             <tr>
@@ -53,9 +53,9 @@
 
             @* condição para  saber se há registro na tabela *@
 
-            @if (Model != null)
+            @if (Model != null && Model.Any())
             {
-                @foreach (var usuario in Model.Usuarios)
+                @foreach (var usuario in Model) 
                 {
                     <tr>
                        @*  <td>

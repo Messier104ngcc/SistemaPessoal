@@ -7,7 +7,7 @@ namespace SistemaPessoal.Models
     public class Usuarios
     {
         [Key]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
         [Required(ErrorMessage = "⚠")]
         public string Nome { get; set; }
@@ -18,7 +18,7 @@ namespace SistemaPessoal.Models
         [Required(ErrorMessage = "⚠")]
         public string Email { get; set; }
 
-        public PerfilEnum Perfil { get; set; }
+        //public PerfilEnum Perfil { get; set; }
 
         [Required(ErrorMessage = "⚠")]
         public string Senha { get; set; }
@@ -28,6 +28,6 @@ namespace SistemaPessoal.Models
 
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
-        public DateTime? DataAtualização {  get; set; } = DateTime.Now;
+        public DateTime? DataAtualizacao {  get; set; } = DateTime.Now;
     }
 }

@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using SistemaPessoal.Date;
-using SistemaPessoal.Date.Repositorio.Interfacer;
-using SistemaPessoal.Date.Repositorio;
+using SistemaPessoal.Repositorio.Interfacer;
+using SistemaPessoal.Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
